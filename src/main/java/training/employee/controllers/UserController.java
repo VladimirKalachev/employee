@@ -13,9 +13,6 @@ import training.employee.repo.UserRepository;
 @Controller
 public class UserController {
 
-    @Autowired
-    private UserRepository userRepository;
-
     @PostMapping("/")
     public String userAdd(@RequestParam String first_name,
                           @RequestParam String last_name, @RequestParam int company_id,
@@ -24,8 +21,8 @@ public class UserController {
 
         try(Session session = HibernateUtil.getSession()){
             session.beginTransaction();
-            Users user = new Users(first_name, last_name, company_id, role);
-            session.save(user);
+            Users users = new Users(first_name, last_name, company_id, role);
+            session.save(users);
             session.getTransaction().commit();
         } catch (Throwable cause) {
             cause.printStackTrace();
