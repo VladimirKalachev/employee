@@ -1,5 +1,7 @@
 package training.employee.controllers;
 
+import org.hibernate.query.Query;
+import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,7 +11,7 @@ import training.employee.models.Users;
 import training.employee.repo.UserRepository;
 
 @Controller
-public class dbController {
+public class UserController {
 
     @Autowired
     private UserRepository userRepository;

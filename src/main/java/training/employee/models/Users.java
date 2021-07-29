@@ -1,18 +1,25 @@
 package training.employee.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 
-@Entity
+import javax.persistence.*;
+
+@Entity (name = "users")
 public class Users {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;             //  user ID
+
+    @Column(name = "first_name")
     private String firstName;   // user first name
+
+    @Column(name = "last_name")
     private String lastName;    // user last name
+
+    @Column(name = "company_id")
     private int companyId;      // user company id
+
+    @Column(name = "role")
     private String role;        // user role
 
     /*
