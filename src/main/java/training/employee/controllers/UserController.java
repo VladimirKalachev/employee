@@ -20,8 +20,17 @@ public class UserController {
     public String userAdd(@RequestParam String first_name,
                           @RequestParam String last_name, @RequestParam int company_id,
                           @RequestParam String role, Model model){
-        Users users = new Users(first_name, last_name, company_id, role);
-        userRepository.save(users);
+
+
+        try(Session session = HibernateUtil.getSession()){
+            session.beginTransaction();
+            Users user = new Users(first_name, last_name, company_id, role);
+            session.save(user);
+            session.getTransaction().commit();
+        } catch (Throwable cause) {
+            cause.printStackTrace();
+        }
+       // userRepository.save(users);
         return "/message";
     }
 

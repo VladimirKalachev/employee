@@ -3,7 +3,8 @@ package training.employee.models;
 
 import javax.persistence.*;
 
-@Entity (name = "users")
+@Entity
+@Table(name = "users")
 public class Users {
 
     @Id
@@ -82,6 +83,7 @@ public class Users {
     public void setRole(String role) {
         this.role = role;
     }
+
     /*
     * method toString
     **/
