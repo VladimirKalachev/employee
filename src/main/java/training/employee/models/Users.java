@@ -10,7 +10,7 @@ public class Users {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
-    Long id;             //  user ID
+    long id;             //  user ID
 
     @Column(name = "first_name")
     private String firstName;   // user first name
@@ -46,7 +46,7 @@ public class Users {
     * Getters, Setters
     */
 
-    public Long getId() {
+    public long getId() {
         return id;
     }
 
