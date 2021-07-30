@@ -15,9 +15,10 @@ public class UserController {
 
     @PostMapping("/")
     public String userAdd(@RequestParam String first_name,
-                          @RequestParam String last_name, @RequestParam int company_id,
-                          @RequestParam String role, Model model){
-
+                          @RequestParam String last_name,
+                          @RequestParam int company_id,
+                          @RequestParam String role,
+                          Model model){
 
         try(Session session = HibernateUtil.getSession()){
             session.beginTransaction();

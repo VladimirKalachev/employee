@@ -9,8 +9,8 @@ public class Users {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    //@Column(name = "id")
-    private Long id;             //  user ID
+    @Column(name = "id")
+    Long id;             //  user ID
 
     @Column(name = "first_name")
     private String firstName;   // user first name
@@ -35,6 +35,7 @@ public class Users {
     */
 
     public Users(String firstName, String lastName, int companyId, String role) {
+        this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.companyId = companyId;
