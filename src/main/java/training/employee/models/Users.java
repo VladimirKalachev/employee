@@ -1,6 +1,5 @@
 package training.employee.models;
 
-
 import javax.persistence.*;
 
 @Entity
