@@ -19,7 +19,7 @@ public class Users implements Serializable {
     private String lastName;
 
     @Column(name = "company_id")
-    private String companyId;
+    private int companyId;
 
     @Column(name = "role")
     private String role;
@@ -27,7 +27,7 @@ public class Users implements Serializable {
       public Users() {
     }
 
-    public Users(String firstName, String lastName, String companyId, String role) {
+    public Users(String firstName, String lastName, int companyId, String role) {
 
         this.firstName = firstName;
         this.lastName = lastName;
@@ -59,11 +59,11 @@ public class Users implements Serializable {
         this.lastName = lastName;
     }
 
-    public String getCompanyId() {
+    public int getCompanyId() {
         return companyId;
     }
 
-    public void setCompanyId(String companyId) {
+    public void setCompanyId(int companyId) {
         this.companyId = companyId;
     }
 
