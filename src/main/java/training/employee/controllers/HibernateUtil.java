@@ -7,23 +7,17 @@ import org.hibernate.cfg.Configuration;
 import training.employee.models.Users;
 
 public class HibernateUtil {
-    private static final SessionFactory sessionFactory;
-
-
+    private static SessionFactory sessionFactory;
 
     static {
         try {
-            Configuration configuration = new Configuration();
-            configuration.configure().addAnnotatedClass(Users.class);
-
-            sessionFactory = configuration.buildSessionFactory();
-        } catch (Throwable e){
-            throw new ExceptionInInitializerError(e);
+            sessionFactory = new Configuration().configure().buildSessionFactory();
+        } catch (Throwable e) {
+            throw new ExceptionInInitializerError("could not configure hibernate " + e);
         }
     }
-
-    public static Session getSession() throws HibernateException{
+    public static Session getSession () throws HibernateException {
         return sessionFactory.openSession();
     }
 
-}
+    }

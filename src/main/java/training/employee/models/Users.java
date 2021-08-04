@@ -9,41 +9,30 @@ public class Users {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
-    long id;             //  user ID
+    private Long id;
 
     @Column(name = "first_name")
-    String firstName;   // user first name
+    private String firstName;
 
     @Column(name = "last_name")
-   String lastName;    // user last name
+    private String lastName;
 
     @Column(name = "company_id")
-     int companyId;      // user company id
+    private int companyId;
 
     @Column(name = "role")
-    String role;        // user role
+    private String role;
 
-    /*
-    * Plain constructor
-    */
-    public Users() {
+      public Users() {
     }
 
-    /*
-    * Class constructor
-    */
-
     public Users(String firstName, String lastName, int companyId, String role) {
-        this.id = id;
+
         this.firstName = firstName;
         this.lastName = lastName;
         this.companyId = companyId;
         this.role = role;
     }
-
-    /*
-    * Getters, Setters
-    */
 
     public long getId() {
         return id;
