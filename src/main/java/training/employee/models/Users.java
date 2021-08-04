@@ -35,7 +35,7 @@ public class Users implements Serializable {
         this.role = role;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
