@@ -31,7 +31,7 @@ public class Users implements Serializable {
 
         this.firstName = firstName;
         this.lastName = lastName;
-       // this.companyId = companyId;
+        this.companyId = companyId;
         this.role = role;
     }
 
