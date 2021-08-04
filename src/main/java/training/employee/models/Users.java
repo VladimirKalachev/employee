@@ -1,13 +1,14 @@
 package training.employee.models;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "users")
-public class Users {
+public class Users implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Long id;
 
@@ -18,7 +19,7 @@ public class Users {
     private String lastName;
 
     @Column(name = "company_id")
-    private int companyId;
+    private String companyId;
 
     @Column(name = "role")
     private String role;
@@ -26,11 +27,11 @@ public class Users {
       public Users() {
     }
 
-    public Users(String firstName, String lastName, int companyId, String role) {
+    public Users(String firstName, String lastName, String companyId, String role) {
 
         this.firstName = firstName;
         this.lastName = lastName;
-        this.companyId = companyId;
+       // this.companyId = companyId;
         this.role = role;
     }
 
@@ -58,11 +59,11 @@ public class Users {
         this.lastName = lastName;
     }
 
-    public int getCompanyId() {
+    public String getCompanyId() {
         return companyId;
     }
 
-    public void setCompanyId(int companyId) {
+    public void setCompanyId(String companyId) {
         this.companyId = companyId;
     }
 
@@ -74,16 +75,12 @@ public class Users {
         this.role = role;
     }
 
-    /*
-    * method toString
-    **/
     @Override
     public String toString() {
-        return "Users{" +
-                "id=" + id +
+        return  "id=" + id +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
-                ", companyId=" + companyId +
+               // ", companyId=" + companyId +
                 ", role='" + role + '\'' +
                 '}';
     }
