@@ -1,7 +1,7 @@
-package training.employee.repo;
+package com.employee.repo;
 
 import org.springframework.data.repository.CrudRepository;
-import training.employee.models.Users;
+import com.employee.models.Users;
 
 public interface UserRepository extends CrudRepository<Users, Long> {
 }

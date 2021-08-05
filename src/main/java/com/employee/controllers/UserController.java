@@ -1,12 +1,12 @@
-package training.employee.controllers;
+package com.employee.controllers;
 
-import training.employee.repo.UserRepository;
+import com.employee.repo.UserRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import training.employee.models.Users;
+import com.employee.models.Users;
 
 
 @Controller

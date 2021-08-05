@@ -1,4 +1,4 @@
-package training.employee.controllers;
+package com.employee.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

@@ -1,4 +1,4 @@
-package training.employee.models;
+package com.employee.models;
 
 import javax.persistence.*;
 import java.io.Serializable;
