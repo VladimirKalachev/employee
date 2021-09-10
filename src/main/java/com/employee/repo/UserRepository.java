@@ -1,7 +1,7 @@
 package com.employee.repo;
 
-import org.springframework.data.repository.CrudRepository;
 import com.employee.models.Users;
+import org.springframework.data.repository.CrudRepository;
 
 public interface UserRepository extends CrudRepository<Users, Long> {
 }
