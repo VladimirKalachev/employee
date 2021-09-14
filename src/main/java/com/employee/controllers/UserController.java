@@ -23,7 +23,7 @@ public class UserController {
                          @RequestParam(value = "role", required = false) String role,
                          Model model) {
 
-      Long userID =  userService.addUser(firstName, lastName, companyId, role);
+        Long userID =  userService.addUser(firstName, lastName, companyId, role).getId();
 
         model.addAttribute("userID", userID);
 

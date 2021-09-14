@@ -17,11 +17,11 @@ public class UserService {
     }
 
     @Transactional
-    public Long addUser(String firstName, String lastName, int companyId, String role) {
+    public Users addUser(String firstName, String lastName, int companyId, String role) {
 
         Users users = new Users(firstName, lastName, companyId, role);
         userRepository.save(users);
-        return users.getId();
+        return users;
     }
 }
 
