@@ -15,12 +15,19 @@ public class UserService {
 
         this.userRepository = userRepository;
     }
-    @Transactional
-    public void addUser(Users users){
-        this.users = users;
-        userRepository.save(users);
-    }
 
+    @Transactional
+    public Long addUser(String firstName, String lastName, int companyId, String role) {
+
+        Users users = new Users(firstName, lastName, companyId, role);
+        userRepository.save(users);
+        return users.getId();
+    }
 }
+
+
+
+
+
 
 

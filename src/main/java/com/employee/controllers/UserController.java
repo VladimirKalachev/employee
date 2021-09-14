@@ -1,5 +1,4 @@
 package com.employee.controllers;
-import com.employee.models.Users;
 import com.employee.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,15 +16,19 @@ public class UserController {
 
     @PostMapping("/main")
 
-    public String userAdd(@RequestParam(value = "firstname", required = false) String firstName,
+    public String getData(@RequestParam(value = "firstname", required = false) String firstName,
                          @RequestParam(value = "lastname", required = false)  String lastName,
                          @RequestParam(value = "companyid", required = false) int companyId,
                          @RequestParam(value = "role", required = false) String role,
                          Model model) {
 
-        Users users = new Users(firstName, lastName, companyId, role);
-        userService.addUser(users);
-        return "message";
+       Long userID =  userService.addUser(firstName, lastName, companyId, role);
+
+       System.out.println("usercontroller" + userID);
+
+
+
+        return "/message";
 
     }
 }

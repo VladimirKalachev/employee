@@ -2,7 +2,7 @@
  Main page
 -->
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:h="http://www.w3.org/1999/html">
 <head>
     <title>Add user</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -26,8 +26,16 @@
         <br>
         <button type="submit" class="btn-btn-success">Submit</button>
         <br>
+
+
     </form>
+
 </div>
+<!--
+<div th:attr="id=${userID}"></div>
+-->
+
+<br>
 <footer th:insert="blocks/footer :: footer"></footer>
 </body>
 </html>
