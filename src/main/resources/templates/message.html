@@ -13,11 +13,16 @@ sucessful add user message
 <header th:insert="blocks/header :: header"></header>
 
 <h2>User  added successful</h2>
-<!--
-<h3 th:text="$userID"></h3>
--->
 
-<meta http-equiv="refresh" content="3;URL=/main" />
+
+<!--User has been created. ID is <span th:text="*{userID}"/>-->
+<!--<br>-->
+<!--<h2>User has been created. ID is <span th:text="*{userID}"/></h2>-->
+<!--<br>-->
+
+<a href="/main" class="btn-btn-success">Back</a>
+
+<meta http-equiv="refresh" content="10;URL=/main" />
 
 <footer th:insert="blocks/footer :: footer"></footer>
 </body>

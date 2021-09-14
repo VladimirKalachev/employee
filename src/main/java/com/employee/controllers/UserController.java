@@ -1,4 +1,5 @@
 package com.employee.controllers;
+
 import com.employee.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,13 +23,13 @@ public class UserController {
                          @RequestParam(value = "role", required = false) String role,
                          Model model) {
 
-       Long userID =  userService.addUser(firstName, lastName, companyId, role);
+      Long userID =  userService.addUser(firstName, lastName, companyId, role);
 
-       System.out.println("usercontroller" + userID);
+        model.addAttribute("userID", userID);
 
-
-
-        return "/message";
-
+        return "/main";
     }
+
+
+
 }
