@@ -5,7 +5,7 @@ import java.io.Serializable;
 
 @Entity
 @Table(name = "users")
-public class Users implements Serializable {
+public class User implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,10 +24,10 @@ public class Users implements Serializable {
     @Column(name = "role")
     private String role;
 
-      public Users() {
+      public User() {
     }
 
-    public Users(String firstName, String lastName, int companyId, String role) {
+    public User(String firstName, String lastName, int companyId, String role) {
 
         this.firstName = firstName;
         this.lastName = lastName;
