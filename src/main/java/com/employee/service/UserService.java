@@ -5,12 +5,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
-
 public class UserService {
 
     private final UserRepository userRepository;
-
-    private User retUser;
 
     public UserService(UserRepository userRepository) {
 
@@ -18,12 +15,11 @@ public class UserService {
     }
 
     @Transactional
-
     public User addUser(String firstName, String lastName, int companyId, String role) {
 
         User user = new User(firstName, lastName, companyId, role);
-        retUser = userRepository.save(user);
-        return retUser;
+
+        return userRepository.save(user);
     }
 }
 

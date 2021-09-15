@@ -80,9 +80,8 @@ public class User implements Serializable {
         return  "id=" + id +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
-               // ", companyId=" + companyId +
+                ", companyId=" + companyId +
                 ", role='" + role + '\'' +
                 '}';
     }
-
 }
