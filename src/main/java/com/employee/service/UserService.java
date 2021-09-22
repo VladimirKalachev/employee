@@ -25,17 +25,28 @@ public class UserService {
         return userRepository.save(user);
     }
 
-//    @Transactional
-//    public User editUser(User) {
-//
-//    }
-
     @Transactional
     public ArrayList<User> userList(){
         Iterable<User> users = userRepository.findAll();
-        ArrayList<User> userList = new ArrayList<>();
-        users.forEach(userList::add);
-        return userList;
+        ArrayList<User> usersList = new ArrayList<>();
+        users.forEach(usersList::add);
+        return usersList;
+    }
+
+    @Transactional
+    public void deleteUser(long id){
+        User user = userRepository.findById(id).orElseThrow();
+        userRepository.delete(user);
+    }
+
+    @Transactional
+    public User editUser(long id, String firstName, String lastName, int companyId, String role){
+        User user = userRepository.findById(id).orElseThrow();
+        user.setFirstName(firstName);
+        user.setLastName(lastName);
+        user.setCompanyId(companyId);
+        user.setRole(role);
+        return userRepository.save(user);
     }
 
 

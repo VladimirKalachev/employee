@@ -1,6 +1,5 @@
 package com.employee.controllers;
 
-import com.employee.models.User;
 import com.employee.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -35,20 +34,26 @@ public class UserController {
 
     @GetMapping("/list")
     public String listData(Model model) {
-        ArrayList<User> users = userService.userList();
-        System.out.println(users);
-
-
-
+        ArrayList users = userService.userList();
+        //System.out.println(users);
 
         model.addAttribute("userList", users);
-       return "/list";
 
+       return "/list";
     }
 
+    @PostMapping("/list")
+    public String deleteUserByID(@RequestParam(value = "ID", required = false) Long id){
+        userService.deleteUser(id);
+        return "redirect:/list";
+    }
 
-
-
-
+//    @PostMapping("/main")
+//    public String editUser(@RequestParam(value = "ID", required = false) Long id){
+//
+//
+//        userService.editUser(id, getData(String firstname, ));
+//        return "/list";
+//    }
 
 }
