@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:h="http://www.w3.org/1999/html">
+<head>
+  <title>Add user</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
+</head>
+<body>
+
+    <header th:insert="blocks/header :: header"></header>
+
+    <div class="container mt-10 mb-10">
+
+        <br>
+        <h3>List of all users</h3>
+        <br>
+        <form action="/list" method="post">
+        <table border="2"  align="center" cellpadding="5" cellspacing="5" rules="all" >
+        <!--      <caption>List of users</caption>-->
+          <tr>
+            <th><span th:text="*{userList}"/></th>
+            <th>First name</th>
+            <th>Last name</th>
+            <th>Company ID</th>
+            <th>Role</th>
+          </tr>
+            <tr><td>23</td> <td>FN</td> <td>LNgergergerg</td> <td>CIDergergergerger</td> <td>Role</td></tr>
+
+        </table>
+        </form>
+    </div>
+
+    <footer th:insert="blocks/footer :: footer"></footer>
+</body>
+</html>

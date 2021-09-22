@@ -1,4 +1,5 @@
 package com.employee.service;
+
 import com.employee.models.User;
 import com.employee.repo.UserRepository;
 import org.springframework.stereotype.Service;
@@ -21,6 +22,22 @@ public class UserService {
 
         return userRepository.save(user);
     }
+
+//    @Transactional
+//    public User editUser(User) {
+//
+//    }
+
+    @Transactional
+    public Iterable<User> userList(){
+        Iterable<User> users = userRepository.findAll();
+        return users;
+    }
+
+
+
+
+
 
 
 }
