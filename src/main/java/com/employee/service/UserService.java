@@ -5,6 +5,8 @@ import com.employee.repo.UserRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
+
 @Service
 public class UserService {
 
@@ -29,9 +31,11 @@ public class UserService {
 //    }
 
     @Transactional
-    public Iterable<User> userList(){
+    public ArrayList<User> userList(){
         Iterable<User> users = userRepository.findAll();
-        return users;
+        ArrayList<User> userList = new ArrayList<>();
+        users.forEach(userList::add);
+        return userList;
     }
 
 

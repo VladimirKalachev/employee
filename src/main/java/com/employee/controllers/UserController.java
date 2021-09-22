@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.ArrayList;
+
 @Controller
 public class UserController {
 
@@ -33,10 +35,14 @@ public class UserController {
 
     @GetMapping("/list")
     public String listData(Model model) {
-        Iterable<User> users = userService.userList();
+        ArrayList<User> users = userService.userList();
+        System.out.println(users);
+
+
+
 
         model.addAttribute("userList", users);
-        return "/list";
+       return "/list";
 
     }
 

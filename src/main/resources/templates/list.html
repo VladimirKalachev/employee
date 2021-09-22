@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:h="http://www.w3.org/1999/html">
 <head>
-  <title>Add user</title>
+  <title>List of users</title>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
 </head>
@@ -15,18 +15,35 @@
         <h3>List of all users</h3>
         <br>
         <form action="/list" method="post">
-        <table border="2"  align="center" cellpadding="5" cellspacing="5" rules="all" >
-        <!--      <caption>List of users</caption>-->
-          <tr>
-            <th><span th:text="*{userList}"/></th>
-            <th>First name</th>
-            <th>Last name</th>
-            <th>Company ID</th>
-            <th>Role</th>
-          </tr>
-            <tr><td>23</td> <td>FN</td> <td>LNgergergerg</td> <td>CIDergergergerger</td> <td>Role</td></tr>
+            <table border="2"  align="center" cellpadding="5" cellspacing="5" rules="all">
+            <!--      <caption>List of users</caption>-->
+              <tr>
+    <!--            <th><span th:text="*{userList}"/></th>-->
+                <th>ID</th>
+                <th>First name</th>
+                <th>Last name</th>
+                <th>Company ID</th>
+                <th>Role</th>
+              </tr>
 
-        </table>
+                <div th:each="element : ${userList}">
+
+                    <form method="post">
+        <!--                    <p th:text="${element.getId}"></p>-->
+        <!--                    <p th:text="${element.getFirstName}"></p>-->
+
+                        <tr>
+                            <td th:text="${element.getId}"></td>
+                            <td th:text="${element.getFirstName}"></td>
+                            <td th:text="${element.getLastName}"></td>
+                            <td th:text="${element.getCompanyId}"></td>
+                            <td th:text="${element.getRole}"></td>
+
+                        </tr>
+                    </form>
+                </div>
+
+            </table>
         </form>
     </div>
 
