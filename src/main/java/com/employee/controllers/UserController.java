@@ -43,8 +43,10 @@ public class UserController {
     }
 
     @PostMapping("/list")
-    public String deleteUserByID(@RequestParam(value = "ID", required = false) Long id){
-        userService.deleteUser(id);
+    public String delete(@RequestParam(value = "ID", required = false) Long id){
+        if (request.getParameter("delete") != null) {
+            userService.deleteUser(id);
+        }
         return "redirect:/list";
     }
 
