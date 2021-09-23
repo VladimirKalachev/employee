@@ -16,23 +16,24 @@
         <br>
         <form action="/list" method="post">
             <table border="2"  align="center" cellpadding="5" cellspacing="5" rules="all">
-            <!--      <caption>List of users</caption>-->
 
               <tr>
-                <th>ID</th>
+                <th style="visibility:hidden">ID</th>
                 <th>First name</th>
                 <th>Last name</th>
                 <th>Company ID</th>
                 <th>Role</th>
+                <th></th>
               </tr>
 
                 <th:block th:each="user : ${userList}">
                         <tr>
-                            <td th:text="${user.getId}"></td>
+                            <td th:text="${user.getId}" style="visibility:hidden"></td>
                             <td th:text="${user.getFirstName}"></td>
                             <td th:text="${user.getLastName}"></td>
                             <td th:text="${user.getCompanyId}"></td>
                             <td th:text="${user.getRole}"></td>
+                            <td><button class="btn btn-warning" type="submit">Edit</button></td>
                         </tr>
                 </th:block>
 
@@ -40,21 +41,27 @@
         </form>
     </div>
 
-    <div class="container mt-10 mb-10">
-        <br>
-        <form action="/list" method="post">
-            <input type="text" name="ID" placeholder="Type ID for delete or edit record" class="form-control"/>
-            <br>
-            <input type="submit" class="button" name="delete" value="Delete"/>
-            <br>
-            <input type="submit" class="button" name="edit" value="Edit"/>
-            <br>
-        </form>
-        <br>
-        <form action="/main">
-            <button>Back to add user</button>
-        </form>
-    </div>
+<!--    <div class="container mt-10 mb-10">-->
+<!--        <br>-->
+<!--        <form action="/list">-->
+<!--            <input type="text" name="ID" placeholder="Type ID for delete or edit record" class="form-control"/>-->
+<!--            <br>-->
+<!--&lt;!&ndash;            <input type="submit" class="button" name="delete" value="Delete"/>&ndash;&gt;-->
+<!--            <form th:action="'/list/' +${ID}+ '/delete'">-->
+<!--                <button class="btn btn-warning" type="submit">Delete</button>-->
+<!--            </form>-->
+<!--            <br>-->
+<!--&lt;!&ndash;            <input type="submit" class="button" name="edit" value="Edit"/>&ndash;&gt;-->
+<!--            <form th:action="'/list/' + ${ID} + 'edit'" method="post">-->
+<!--                <button class="btn btn-warning" type="submit">Edit</button>-->
+<!--            </form>-->
+<!--            <br>-->
+<!--        </form>-->
+<!--        <br>-->
+<!--        <form action="/main">-->
+<!--            <button>Back to add user</button>-->
+<!--        </form>-->
+<!--    </div>-->
 
     <footer th:insert="blocks/footer :: footer"></footer>
 </body>

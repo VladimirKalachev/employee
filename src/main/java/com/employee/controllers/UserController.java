@@ -35,27 +35,24 @@ public class UserController {
     @GetMapping("/list")
     public String listData(Model model) {
         ArrayList users = userService.userList();
-        //System.out.println(users);
-
         model.addAttribute("userList", users);
-
-       return "/list";
+        return "/list";
     }
 
-    @PostMapping("/list")
-    public String delete(@RequestParam(value = "ID", required = false) Long id){
-        if (request.getParameter("delete") != null) {
-            userService.deleteUser(id);
-        }
-        return "redirect:/list";
-    }
+    
 
-//    @PostMapping("/main")
-//    public String editUser(@RequestParam(value = "ID", required = false) Long id){
+
+//    @GetMapping("/list/{ID}/delete")
+//    public String delete(@RequestParam(value = "ID", required = false) Long id){
 //
+//        System.out.println("id is " + id);
 //
-//        userService.editUser(id, getData(String firstname, ));
-//        return "/list";
+//            userService.deleteUser(id);
+//
+//        return "redirect:/list";
 //    }
+
+
+
 
 }
