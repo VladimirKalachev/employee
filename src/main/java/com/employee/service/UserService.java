@@ -5,8 +5,6 @@ import com.employee.repo.UserRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
-
 @Service
 public class UserService {
 
@@ -25,12 +23,18 @@ public class UserService {
         return userRepository.save(user);
     }
 
+//    @Transactional
+//    public ArrayList<User> userList(){
+//        Iterable<User> users = userRepository.findAll();
+//        ArrayList<User> usersList = new ArrayList<>();
+//        users.forEach(usersList::add);
+//        return usersList;
+//    }
+
     @Transactional
-    public ArrayList<User> userList(){
+    public Iterable<User> userList(){
         Iterable<User> users = userRepository.findAll();
-        ArrayList<User> usersList = new ArrayList<>();
-        users.forEach(usersList::add);
-        return usersList;
+        return users;
     }
 
     @Transactional
@@ -40,15 +44,10 @@ public class UserService {
     }
 
     @Transactional
-    public User editUser(long id, String firstName, String lastName, int companyId, String role){
+    public User showUser(long id){
         User user = userRepository.findById(id).orElseThrow();
-        user.setFirstName(firstName);
-        user.setLastName(lastName);
-        user.setCompanyId(companyId);
-        user.setRole(role);
-        return userRepository.save(user);
+        return user;
     }
-
 
 
 
