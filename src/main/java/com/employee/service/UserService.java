@@ -44,7 +44,7 @@ public class UserService {
     }
 
     @Transactional
-    public User showUser(long id){
+    public  User showUser(long id){
         User user = userRepository.findById(id).orElseThrow();
         return user;
     }

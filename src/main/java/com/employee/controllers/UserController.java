@@ -25,14 +25,13 @@ public class UserController {
                          Model model) {
 
         Long userID =  userService.addUser(firstName, lastName, companyId, role).getId();
-
         model.addAttribute("userID", userID);
-
         return "/main";
     }
 
     @GetMapping("/list")
     public String listData(Model model) {
+
         Iterable users  = userService.userList();
         model.addAttribute("userList", users);
         return "/list";
@@ -40,9 +39,8 @@ public class UserController {
 
     @GetMapping("/list/{id}")
     public String deleteUser(@PathVariable(value = "id", required = false) Long id, Model model) {
-        System.out.println("ID is " + id);
-        model.addAttribute("user", userService.showUser(id));
 
+        model.addAttribute("user", userService.showUser(id) );
         return "/edit";
     }
 

@@ -12,35 +12,34 @@
     <div class="container mt-10 mb-10">
 
         <h1>Edit user</h1>
-    <form action="/edit" method="post">
-        <table border="2"  align="center" cellpadding="5" cellspacing="5" rules="all">
+            <br>
 
-            <tr>
-                <th style="visibility:hidden">ID</th>
-                <th>First name</th>
-                <th>Last name</th>
-                <th>Company ID</th>
-                <th>Role</th>
-                <th></th>
+<!--            <span th:text="*{firstname}"/>-->
+        <div th:each="element : ${user}">
+            <form  method="post">
 
-            </tr>
+                <input text="text"  th:value="${element.getFirstName}" name="firstname" placeholder="Type first name" class="form-control">
+                <br>
+                <input type="text" th:value="${element.getLastName}" name="lastname" placeholder="Type last name" class="form-control">
+                <br>
+                <input type="text" th:value="${element.getCompanyId}"name="companyid" placeholder="Type company id" class="form-control">
+                <br>
+                <input type="text" th:value="${element.getRole}" name="role" placeholder="Type role " class="form-control">
+                <br>
+                <button th:type="submit" class="btn-btn-success">Submit</button>
+                <br>
 
-        <th:block >
-            <tr>
-                <td th:text="${user.getId}" style="visibility:hidden"></td>
-                <td th:text="${user.getFirstName}"></td>
-                <td th:text="${user.getLastName}"></td>
-                <td th:text="${user.getCompanyId}"></td>
-                <td th:text="${user.getRole}"></td>
-                <td><button class="btn btn-warning" type="submit">Update</button></td>
+            </form>
+        </div>
+        <br>
+        <form action="/main">
+            <button>Back to add user</button>
+        </form>
+        <br>
 
-            </tr>
-        </th:block>
-
-        </table>
-    </form>
-
-
+        <form action="/list">
+            <button>Back to list user</button>
+        </form>
 
     </div>
 
