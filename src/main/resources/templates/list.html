@@ -24,6 +24,7 @@
                 <th>Company ID</th>
                 <th>Role</th>
                 <th></th>
+                <th></th>
               </tr>
 
                 <th:block th:each="user : ${userList}">
@@ -33,7 +34,8 @@
                             <td th:text="${user.getLastName}"></td>
                             <td th:text="${user.getCompanyId}"></td>
                             <td th:text="${user.getRole}"></td>
-                            <td><a th:href="'/list/' + ${user.getId}" class="btn btn-warning">Edit</a></td>
+                            <td><a th:href="'/edit/' + ${user.getId}" class="btn btn-warning">Edit</a></td>
+                            <td><a th:href="'/delete/' + ${user.getId}" class="btn btn-warning">Delete</a></td>
                         </tr>
                 </th:block>
 

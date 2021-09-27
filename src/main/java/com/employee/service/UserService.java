@@ -5,6 +5,9 @@ import com.employee.repo.UserRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
+import java.util.Optional;
+
 @Service
 public class UserService {
 
@@ -23,37 +26,42 @@ public class UserService {
         return userRepository.save(user);
     }
 
-//    @Transactional
-//    public ArrayList<User> userList(){
-//        Iterable<User> users = userRepository.findAll();
-//        ArrayList<User> usersList = new ArrayList<>();
-//        users.forEach(usersList::add);
-//        return usersList;
-//    }
-
     @Transactional
     public Iterable<User> userList(){
+
         Iterable<User> users = userRepository.findAll();
+
         return users;
     }
 
     @Transactional
-    public void deleteUser(long id){
+    public void deleteUser(Long id){
         User user = userRepository.findById(id).orElseThrow();
         userRepository.delete(user);
     }
 
     @Transactional
-    public  User showUser(long id){
-        User user = userRepository.findById(id).orElseThrow();
-        return user;
+    public ArrayList editUser(Long id){
+
+        Optional<User> user = userRepository.findById(id);
+        ArrayList<User> result = new ArrayList<>();
+        user.ifPresent(result::add);
+        return result;
+
     }
+    @Transactional
+    public User updateUser(Long id, String firstName, String lastName, int companyId, String role) {
+
+        User user = userRepository.findById(id).orElseThrow();
+        user.setFirstName(firstName);
+        user.setLastName(lastName);
+        user.setCompanyId(companyId);
+        user.setRole(role);
+
+        return userRepository.save(user);
 
 
-
-
-
-
+    }
 }
 
 

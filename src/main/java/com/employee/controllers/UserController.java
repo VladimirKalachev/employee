@@ -1,5 +1,6 @@
 package com.employee.controllers;
 
+import com.employee.models.User;
 import com.employee.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -37,12 +38,39 @@ public class UserController {
         return "/list";
     }
 
-    @GetMapping("/list/{id}")
-    public String deleteUser(@PathVariable(value = "id", required = false) Long id, Model model) {
+    @GetMapping("/delete/{id}")
+    public String deleteUser(@PathVariable(value = "id", required = false) Long id,
+                             Model model){
+        userService.deleteUser(id);
+        return "redirect:/list";
+    }
 
-        model.addAttribute("user", userService.showUser(id) );
+    @GetMapping("/edit/{id}")
+    public String editUser(@PathVariable(value = "id") Long id,
+                           Model model){
+
+        model.addAttribute("user", userService.editUser(id));
+        return "/edit";
+
+    }
+
+    @PostMapping("/edit/{id}")
+    public String updUser(@PathVariable(value = "id", required = false) Long id,
+                           @RequestParam(value = "firstname", required = false) String firstName,
+                           @RequestParam(value = "lastname", required = false)  String lastName,
+                           @RequestParam(value = "companyid", required = false) Integer companyId,
+                           @RequestParam(value = "role", required = false) String role,
+                           Model model) {
+
+        User user =  userService.updateUser(id, firstName, lastName, companyId, role);
+        model.addAttribute("user", user);
+
         return "/edit";
     }
+
+
+
+
 
 
 
