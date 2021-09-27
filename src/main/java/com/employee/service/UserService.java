@@ -5,9 +5,6 @@ import com.employee.repo.UserRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
-import java.util.Optional;
-
 @Service
 public class UserService {
 
@@ -41,12 +38,11 @@ public class UserService {
     }
 
     @Transactional
-    public ArrayList editUser(Long id){
+    public User editUser(Long id){
 
-        Optional<User> user = userRepository.findById(id);
-        ArrayList<User> result = new ArrayList<>();
-        user.ifPresent(result::add);
-        return result;
+        User user = userRepository.findById(id).orElseThrow();
+
+        return user;
 
     }
     @Transactional
@@ -59,7 +55,6 @@ public class UserService {
         user.setRole(role);
 
         return userRepository.save(user);
-
 
     }
 }

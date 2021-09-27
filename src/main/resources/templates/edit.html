@@ -14,12 +14,8 @@
         <h1>Edit user</h1>
             <br>
 
-<!--            <span th:text="*{firstname}"/>-->
         <div th:each="element : ${user}">
             <form  method="post">
-                
-                <input text="text" th:value="${element.getFirstName}" name="firstname" placeholder="Type first name" class="form-control">
-                <br>
 
                 <input text="text" th:value="${element.getFirstName}" name="firstname" placeholder="Type first name" class="form-control">
                 <br>
@@ -31,7 +27,6 @@
                 <br>
                 <button th:type="submit" class="btn-btn-success">Submit</button>
                 <br>
-
 
             </form>
         </div>
