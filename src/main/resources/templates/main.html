@@ -13,7 +13,6 @@
     <h1>Add user</h1>
     <br>
     <form action="/main" method="post">
-
         <input type="text" name="firstname" placeholder="Type name" class="form-control">
         <br>
         <input type="text" name="lastname" placeholder="Type last name" class="form-control">
@@ -25,6 +24,20 @@
         <button type="submit" class="btn-btn-success">Submit</button>
         <br>
     </form>
+
+    <br>
+
+   <form enctype="multipart/form-data" method="post" action="/csv-upload">
+       <input type="file" name="file" accept=".csv">
+       <button type="submit" class="btn-btn-success">Upload</button>
+   </form>
+
+<!--    <div class="alert alert-danger" role="alert" th:if="${!status}">-->
+<!--        <strong>Error:</strong>-->
+<!--        <span th:text="${message}"></span>-->
+<!--    </div>-->
+
+
     <br>
     <form action="/list" >
         <button>List of users</button>
@@ -33,9 +46,7 @@
     <br>
     <h2>User has been created. ID is <span th:text="*{userID}"/></h2>
 
-
 </div>
-
 
 <br>
 <footer th:insert="blocks/footer :: footer"></footer>
