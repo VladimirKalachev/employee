@@ -1,8 +1,8 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:h="http://www.w3.org/1999/html">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>List of users</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
 </head>
 <body>
@@ -13,7 +13,7 @@
 
     <h1>Edit user</h1>
     <form action="/edit" method="post">
-        <table border="2"  align="center" cellpadding="5" cellspacing="5" rules="all">
+        <table border="2" align="center" cellpadding="5" cellspacing="5" rules="all">
 
             <tr>
                 <th style="visibility:hidden">ID</th>
@@ -32,14 +32,15 @@
                     <td th:text="${user.getLastName}"></td>
                     <td th:text="${user.getCompanyId}"></td>
                     <td th:text="${user.getRole}"></td>
-                    <td><button class="btn btn-warning" type="submit">Update</button></td>
+                    <td>
+                        <button class="btn btn-warning" type="submit">Update</button>
+                    </td>
 
                 </tr>
             </th:block>
 
         </table>
     </form>
-
 
 
 </div>

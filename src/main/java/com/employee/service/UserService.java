@@ -32,7 +32,7 @@ public class UserService {
     }
 
     @Transactional
-    public Iterable<User> userList(){
+    public Iterable<User> userList() {
 
         Iterable<User> users = userRepository.findAll();
 
@@ -40,19 +40,20 @@ public class UserService {
     }
 
     @Transactional
-    public void deleteUser(Long id){
+    public void deleteUser(Long id) {
         User user = userRepository.findById(id).orElseThrow();
         userRepository.delete(user);
     }
 
     @Transactional
-    public User editUser(Long id){
+    public User editUser(Long id) {
 
         User user = userRepository.findById(id).orElseThrow();
 
         return user;
 
     }
+
     @Transactional
     public User updateUser(Long id, String firstName, String lastName, int companyId, String role) {
 
@@ -68,7 +69,7 @@ public class UserService {
     @Transactional
     public void csvToUsers(MultipartFile file) {
 
-        try (BufferedReader reader = new BufferedReader(new InputStreamReader(file.getInputStream()))){
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(file.getInputStream()))) {
 
             CsvToBean csvToBean = new CsvToBeanBuilder(reader)
                     .withType(User.class)

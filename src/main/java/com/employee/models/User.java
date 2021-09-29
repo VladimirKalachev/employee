@@ -24,7 +24,7 @@ public class User implements Serializable {
     @Column(name = "role")
     private String role;
 
-      public User() {
+    public User() {
     }
 
     public User(String firstName, String lastName, int companyId, String role) {
@@ -77,7 +77,7 @@ public class User implements Serializable {
 
     @Override
     public String toString() {
-        return  "id=" + id +
+        return "id=" + id +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", companyId=" + companyId +

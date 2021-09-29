@@ -74,17 +74,13 @@ public class UserController {
     @PostMapping("/csv-upload")
     public String uploadFile(@RequestParam(value = "file") MultipartFile file,
                              Model model) throws IOException {
-        System.out.println("Upload was pressed");
+
         if (file.isEmpty()) {
             model.addAttribute("message", "Please select a CSV file to upload");
-            //model.addAttribute("status", false);
-            System.out.println("file is EMPTY");
+
         } else {
-
-            System.out.println("File NOT empty. Call service");
-
-                userService.csvToUsers(file);
-            }
+            userService.csvToUsers(file);
+        }
 
         return "/main";
 
