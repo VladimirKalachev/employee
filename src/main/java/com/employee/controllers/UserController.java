@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
+
 @Controller
 public class UserController {
 
@@ -70,8 +72,8 @@ public class UserController {
     }
 
     @PostMapping("/csv-upload")
-    public String uploadFile(@RequestParam("file") MultipartFile file,
-                             Model model) {
+    public String uploadFile(@RequestParam(value = "file") MultipartFile file,
+                             Model model) throws IOException {
         System.out.println("Upload was pressed");
         if (file.isEmpty()) {
             model.addAttribute("message", "Please select a CSV file to upload");

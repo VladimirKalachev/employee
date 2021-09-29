@@ -67,23 +67,21 @@ public class UserService {
 
     @Transactional
     public void csvToUsers(MultipartFile file) {
-        System.out.println("Service called");
+
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(file.getInputStream()))){
+
             CsvToBean csvToBean = new CsvToBeanBuilder(reader)
                     .withType(User.class)
                     .withIgnoreLeadingWhiteSpace(true)
                     .build();
             List users = csvToBean.parse();
 
-            System.out.println(users);
-
-                userRepository.saveAll(users);
+            userRepository.saveAll(users);
 
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-
 
 }
 
