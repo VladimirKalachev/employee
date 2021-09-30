@@ -3,6 +3,7 @@ package com.employee.controllers;
 import com.employee.models.User;
 import com.employee.service.UserService;
 import com.opencsv.CSVWriter;
+import com.opencsv.bean.ColumnPositionMappingStrategy;
 import com.opencsv.bean.StatefulBeanToCsv;
 import com.opencsv.bean.StatefulBeanToCsvBuilder;
 import org.springframework.http.HttpHeaders;
@@ -94,18 +95,27 @@ public class UserController {
     public void exportCSV(HttpServletResponse response) throws Exception {
 
         String filename = "users.csv";
-        response.setContentType("text/csv");
 
+        response.setContentType("text/csv");
         response.setHeader(HttpHeaders.CONTENT_DISPOSITION,
                 "attachment; filename=\"" + filename + "\"");
 
+        ColumnPositionMappingStrategy strategy = new ColumnPositionMappingStrategy();
+        strategy.setType(User.class);
+        String[] header = {"","firstName", "lastName", "companyId", "role"};
+        strategy.setColumnMapping(header);
+
+
         StatefulBeanToCsv<User> writer = new StatefulBeanToCsvBuilder<User>(response.getWriter())
+                .withMappingStrategy(strategy)
+                //.withIgnoreField(User.class)
                 .withQuotechar(CSVWriter.NO_QUOTE_CHARACTER)
                 .withSeparator(CSVWriter.DEFAULT_SEPARATOR)
                 .withOrderedResults(false)
                 .build();
 
         List<User> users = (List<User>) userService.userList();
+
 
         writer.write(users);
     }

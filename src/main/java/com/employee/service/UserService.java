@@ -7,6 +7,7 @@ import com.opencsv.bean.CsvToBeanBuilder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -69,8 +70,14 @@ public class UserService {
     public void csvToUsers(MultipartFile file) {
 
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(file.getInputStream()))) {
-
+/*
+            ColumnPositionMappingStrategy strategy = new ColumnPositionMappingStrategy();
+            strategy.setType(User.class);
+            String[] header = {"id", "firstName", "lastName", "companyId", "role"};
+            strategy.setColumnMapping(header);
+*/
             CsvToBean csvToBean = new CsvToBeanBuilder(reader)
+                   // .withMappingStrategy(strategy)
                     .withType(User.class)
                     .withIgnoreLeadingWhiteSpace(true)
                     .build();
