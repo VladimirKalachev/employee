@@ -87,27 +87,27 @@ public class UserController {
             userService.csvToUsers(file);
         }
 
-        return "/main";
+        return "redirect:/main";
     }
 
     @GetMapping("/download")
-     public void exportCSV(HttpServletResponse response) throws Exception {
+    public void exportCSV(HttpServletResponse response) throws Exception {
 
-            String filename = "users.csv";
+        String filename = "users.csv";
+        response.setContentType("text/csv");
 
-            response.setContentType("text/csv");
-            response.setHeader(HttpHeaders.CONTENT_DISPOSITION,
-                    "attachment; filename=\"" + filename + "\"");
+        response.setHeader(HttpHeaders.CONTENT_DISPOSITION,
+                "attachment; filename=\"" + filename + "\"");
 
-            StatefulBeanToCsv<User> writer = new StatefulBeanToCsvBuilder<User>(response.getWriter())
-                    .withQuotechar(CSVWriter.NO_QUOTE_CHARACTER)
-                    .withSeparator(CSVWriter.DEFAULT_SEPARATOR)
-                    .withOrderedResults(false)
-                    .build();
+        StatefulBeanToCsv<User> writer = new StatefulBeanToCsvBuilder<User>(response.getWriter())
+                .withQuotechar(CSVWriter.NO_QUOTE_CHARACTER)
+                .withSeparator(CSVWriter.DEFAULT_SEPARATOR)
+                .withOrderedResults(false)
+                .build();
 
-            List<User> users = (List<User>) userService.userList();
-            writer.write(users);
+        List<User> users = (List<User>) userService.userList();
 
+        writer.write(users);
     }
 }
 
