@@ -1,5 +1,9 @@
-# employee
-here a web application is implemented that allows you to add users to the database through a form on the site.
-editing and deleting user data is available.
-presenting all users as a list
-import and export from database to csv
+Приложение демонстирует работу со следующим стеком:
+ - Spring
+ - Hibernate
+ - PostgreSQL
+ - Thymeleaf
+ - HTML
+
+С полей форм на HTML-странице данные заносятся в таблицу базы данных. Из базы их можно вывести в списке, можно отредактировать или удалить строку.
+Кроме этого реализована выгрузка в CSV-файл.
