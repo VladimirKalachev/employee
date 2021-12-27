@@ -116,7 +116,6 @@ public class UserController {
 
         List<User> users = (List<User>) userService.userList();
 
-
         writer.write(users);
     }
 }
