@@ -1,6 +1,6 @@
 package com.employee.service;
 
-import com.employee.models.User;
+import com.employee.model.User;
 import com.employee.repo.UserRepository;
 import com.opencsv.bean.CsvToBean;
 import com.opencsv.bean.CsvToBeanBuilder;

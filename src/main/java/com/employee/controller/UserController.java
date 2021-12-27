@@ -1,6 +1,6 @@
-package com.employee.controllers;
+package com.employee.controller;
 
-import com.employee.models.User;
+import com.employee.model.User;
 import com.employee.service.UserService;
 import com.opencsv.CSVWriter;
 import com.opencsv.bean.ColumnPositionMappingStrategy;
@@ -25,6 +25,12 @@ public class UserController {
 
     public UserController(UserService userService) {
         this.userService = userService;
+    }
+
+    @GetMapping("/main")
+    public String home(Model model){
+        model.addAttribute("title", "Main page");
+        return "/main";
     }
 
     @PostMapping("/main")
