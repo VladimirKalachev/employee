@@ -27,13 +27,13 @@ public class UserController {
         this.userService = userService;
     }
 
-    @GetMapping("/main")
+    @GetMapping("/index")
     public String home(Model model){
-        model.addAttribute("title", "Main page");
-        return "/main";
+        model.addAttribute("title", "");
+        return "/index";
     }
 
-    @PostMapping("/main")
+    @PostMapping("/index")
     public String createUser(@RequestParam(value = "firstname", required = false) String firstName,
                              @RequestParam(value = "lastname", required = false) String lastName,
                              @RequestParam(value = "companyid", required = false) int companyId,
@@ -42,7 +42,7 @@ public class UserController {
 
         Long userID = userService.addUser(firstName, lastName, companyId, role).getId();
         model.addAttribute("userID", userID);
-        return "/main";
+        return "/index";
     }
 
     @GetMapping("/list")
@@ -94,7 +94,7 @@ public class UserController {
             userService.csvToUsers(file);
         }
 
-        return "redirect:/main";
+        return "redirect:/index";
     }
 
     @GetMapping("/download")
