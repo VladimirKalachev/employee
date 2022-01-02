@@ -1,5 +1,7 @@
 package com.employee.model;
 
+import com.opencsv.bean.CsvBindByPosition;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -10,18 +12,23 @@ public class User implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
+    @CsvBindByPosition(position = 0)
     private Long id;
 
     @Column(name = "first_name")
+    @CsvBindByPosition(position = 1)
     private String firstName;
 
     @Column(name = "last_name")
+    @CsvBindByPosition(position = 2)
     private String lastName;
 
     @Column(name = "company_id")
+    @CsvBindByPosition(position = 3)
     private int companyId;
 
     @Column(name = "role")
+    @CsvBindByPosition(position = 4)
     private String role;
 
     public User() {

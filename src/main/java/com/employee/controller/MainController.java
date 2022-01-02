@@ -18,18 +18,18 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@Controller
-public class UserController {
+@org.springframework.stereotype.Controller
+public class MainController {
 
     private final UserService userService;
 
-    public UserController(UserService userService) {
+    public MainController(UserService userService) {
         this.userService = userService;
     }
 
     @GetMapping("/index")
     public String home(Model model){
-        model.addAttribute("title", "");
+        model.addAttribute("title", "Index page");
         return "/index";
     }
 
@@ -91,7 +91,7 @@ public class UserController {
             model.addAttribute("message", "Please select a CSV file to upload");
 
         } else {
-            userService.csvToUsers(file);
+            userService.CsvToUserBean(file);
         }
 
         return "redirect:/index";
@@ -108,13 +108,11 @@ public class UserController {
 
         ColumnPositionMappingStrategy strategy = new ColumnPositionMappingStrategy();
         strategy.setType(User.class);
-        String[] header = {"","firstName", "lastName", "companyId", "role"};
+        String[] header = {"id","firstName", "lastName", "companyId", "role"};
         strategy.setColumnMapping(header);
-
 
         StatefulBeanToCsv<User> writer = new StatefulBeanToCsvBuilder<User>(response.getWriter())
                 .withMappingStrategy(strategy)
-                //.withIgnoreField(User.class)
                 .withQuotechar(CSVWriter.NO_QUOTE_CHARACTER)
                 .withSeparator(CSVWriter.DEFAULT_SEPARATOR)
                 .withOrderedResults(false)
