@@ -21,6 +21,7 @@ public class UserService {
 
     private final UserRepository userRepository;
 
+
     public UserService(UserRepository userRepository) {
 
         this.userRepository = userRepository;
@@ -70,70 +71,16 @@ public class UserService {
     }
 
     @Transactional
-    /*
-    public void csvToUsers(MultipartFile file) {
-        System.out.println("Was called service upload CSV");
-        try (BufferedReader reader = new BufferedReader(new InputStreamReader(file.getInputStream()))) {
-            CsvToBean csvToBean = new CsvToBeanBuilder(reader)
-                   // .withMappingStrategy(strategy)
-                    .withType(User.class)
-                    .withIgnoreLeadingWhiteSpace(true)
-                    .build();
-            List users = csvToBean.parse();
-            System.out.println("users toString" + users.toString());
-            userRepository.saveAll(users);
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-    */
-//    public void csvToUsers(MultipartFile file) throws FileNotFoundException {
-//        System.out.println("Was called vervice upload csv");
-//
-//        Map<String, String> map = new HashMap<>();
-//
-//        map.put("firstName", "firstName");
-//        map.put("lastName", "lastName");
-//        map.put("companyId", "companyId");
-//        map.put("role", "role");
-//
-//        HeaderColumnNameTranslateMappingStrategy<User> strategy =
-//                new HeaderColumnNameTranslateMappingStrategy<>();
-//
-//        strategy.setType(User.class);
-//        strategy.setColumnMapping(map);
-//
-//        CSVReader csvReader = null;
-//        try {
-//            csvReader = new CSVReader(new FileReader
-//                    ("C:\\Users\\pc\\Downloads\\users(5).csv"));
-//        } catch (FileNotFoundException e) {
-//            e.printStackTrace();
-//        }
-//        CsvToBean csvToBean = new CsvToBean();
-//
-////       // List<User> list = csvToBean.parse(strategy);
-////
-////        for(User user : list) {
-////            System.out.println(user);
-////        }
-//
-//    }
-
-
     public void CsvToUserBean(MultipartFile file) throws IOException {
-        System.out.println("Was called service upload csv");
+
         BufferedReader reader = new BufferedReader(new InputStreamReader(file.getInputStream()));
         List<User> users = new CsvToBeanBuilder<User>(reader)
                 .withType(User.class)
                 .build()
                 .parse();
 
-        users.forEach(System.out::println);
-
+        users.forEach(user -> userRepository.save(user));
     }
-
 }
 
 

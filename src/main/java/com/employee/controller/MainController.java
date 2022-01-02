@@ -91,7 +91,7 @@ public class MainController {
             model.addAttribute("message", "Please select a CSV file to upload");
 
         } else {
-            userService.CsvToUserBean(file);
+           userService.CsvToUserBean(file);
         }
 
         return "redirect:/index";
