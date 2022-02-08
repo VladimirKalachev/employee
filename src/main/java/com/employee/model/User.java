@@ -10,7 +10,7 @@ import java.io.Serializable;
 public class User implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "id")
     @CsvBindByPosition(position = 0)
     private Long id;

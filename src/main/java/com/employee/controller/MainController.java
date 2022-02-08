@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
@@ -28,7 +29,7 @@ public class MainController {
     }
 
     @GetMapping("/index")
-    public String home(Model model){
+    public String home(Model model) {
         model.addAttribute("title", "Index page");
         return "/index";
     }
@@ -91,7 +92,7 @@ public class MainController {
             model.addAttribute("message", "Please select a CSV file to upload");
 
         } else {
-           userService.CsvToUserBean(file);
+            userService.CsvToUserBean(file);
         }
 
         return "redirect:/index";
@@ -108,7 +109,7 @@ public class MainController {
 
         ColumnPositionMappingStrategy strategy = new ColumnPositionMappingStrategy();
         strategy.setType(User.class);
-        String[] header = {"id","firstName", "lastName", "companyId", "role"};
+        String[] header = {"id", "firstName", "lastName", "companyId", "role"};
         strategy.setColumnMapping(header);
 
         StatefulBeanToCsv<User> writer = new StatefulBeanToCsvBuilder<User>(response.getWriter())
