@@ -21,7 +21,7 @@ import java.util.List;
 @Controller
 public class MainController {
 
-    private final UserService userService;
+    private  final UserService userService;
 
     public MainController(UserService userService) {
         this.userService = userService;
@@ -54,8 +54,7 @@ public class MainController {
     }
 
     @GetMapping("/delete/{id}")
-    public String deleteUser(@PathVariable(value = "id", required = false) Long id,
-                             Model model) {
+    public String deleteUser(@PathVariable(value = "id", required = false) Long id) {
         userService.deleteUser(id);
         return "redirect:/list";
     }
@@ -99,28 +98,31 @@ public class MainController {
 
     @GetMapping("/download")
     public void exportCSV(HttpServletResponse response) throws Exception {
+        try {
+            String filename = "users.csv";
 
-        String filename = "users.csv";
+            response.setContentType("text/csv");
+            response.setHeader(HttpHeaders.CONTENT_DISPOSITION,
+                    "attachment; filename=\"" + filename + "\"");
 
-        response.setContentType("text/csv");
-        response.setHeader(HttpHeaders.CONTENT_DISPOSITION,
-                "attachment; filename=\"" + filename + "\"");
+            ColumnPositionMappingStrategy strategy = new ColumnPositionMappingStrategy();
+            strategy.setType(User.class);
+            String[] header = {"id", "firstName", "lastName", "companyId", "role"};
+            strategy.setColumnMapping(header);
 
-        ColumnPositionMappingStrategy strategy = new ColumnPositionMappingStrategy();
-        strategy.setType(User.class);
-        String[] header = {"id", "firstName", "lastName", "companyId", "role"};
-        strategy.setColumnMapping(header);
+            StatefulBeanToCsv<User> writer = new StatefulBeanToCsvBuilder<User>(response.getWriter())
+                    .withMappingStrategy(strategy)
+                    .withQuotechar(CSVWriter.NO_QUOTE_CHARACTER)
+                    .withSeparator(CSVWriter.DEFAULT_SEPARATOR)
+                    .withOrderedResults(false)
+                    .build();
 
-        StatefulBeanToCsv<User> writer = new StatefulBeanToCsvBuilder<User>(response.getWriter())
-                .withMappingStrategy(strategy)
-                .withQuotechar(CSVWriter.NO_QUOTE_CHARACTER)
-                .withSeparator(CSVWriter.DEFAULT_SEPARATOR)
-                .withOrderedResults(false)
-                .build();
+            List<User> users = (List<User>) userService.userList();
 
-        List<User> users = (List<User>) userService.userList();
-
-        writer.write(users);
+            writer.write(users);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 }
 

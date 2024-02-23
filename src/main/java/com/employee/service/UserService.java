@@ -38,9 +38,7 @@ public class UserService {
     @Transactional
     public Iterable<User> userList() {
 
-        Iterable<User> users = userRepository.findAll();
-
-        return users;
+        return userRepository.findAll();
     }
 
     @Transactional
@@ -52,10 +50,7 @@ public class UserService {
     @Transactional
     public User editUser(Long id) {
 
-        User user = userRepository.findById(id).orElseThrow();
-
-        return user;
-
+        return userRepository.findById(id).orElseThrow();
     }
 
     @Transactional
@@ -79,7 +74,7 @@ public class UserService {
                 .build()
                 .parse();
 
-        users.forEach(user -> userRepository.save(user));
+        userRepository.saveAll(users);
     }
 }
 
